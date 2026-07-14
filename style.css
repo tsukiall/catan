@@ -1,0 +1,145 @@
+:root {
+  --board-size: 90vh;
+  --height: calc((var(--max-rows) - 1) * 0.75 + 1);
+  --hex-h: calc(var(--board-size) / var(--height));
+  --hex-w: calc(var(--hex-h) / 1.1547);
+  --vert-spacing: calc(var(--hex-h) * 0.75);
+}
+
+body {
+  position: relative;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: black;
+}
+
+#settings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid white;
+  border-radius: 4px;
+  margin: 8px;
+  padding: 8px 16px;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: stretch;
+  color: white;
+}
+
+.input-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#board {
+  position: relative;
+  margin: auto;
+  height: 90vh;
+  width: calc(var(--max-cols) * var(--hex-w));
+}
+
+.hex {
+  container-type: size;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: var(--hex-h);
+  aspect-ratio: 1 / 1.1547;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  left: calc((var(--row-offset) * var(--hex-w)) + (var(--col) * var(--hex-w)));
+  top: calc(var(--row) * var(--vert-spacing));
+}
+
+.hex.lumber {
+  background-color: #2e5c31;
+}
+
+.hex.wool {
+  background-color: #7bc04b;
+}
+
+.hex.grain {
+  background-color: #f4d03f;
+}
+
+.hex.brick {
+  background-color: #c0392b;
+}
+
+.hex.ore {
+  background-color: #7f8c8d;
+}
+
+.hex.desert {
+  background-color: #d4c49d;
+}
+
+.token {
+  font-size: 13cqh;
+  font-weight: 900;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e3c586;
+  border: 1px solid black;
+  width: 25%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.token.num-6,
+.token.num-8 {
+  color: red;
+}
+
+.token.selected {
+  outline: 5px solid lime;
+}
+
+.harbour {
+  font-weight: 900;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  position: absolute;
+  z-index: 10;
+  color: white;
+  width: calc(var(--hex-h) * 0.5);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.harbour::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 2px;
+  width: 50%;
+  border-bottom: 4px solid white;
+  transform-origin: bottom left;
+  transform: rotate(-45deg);
+}
+
+.harbour::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 2px;
+  width: 50%;
+  border-bottom: 4px solid white;
+  transform-origin: bottom right;
+  transform: rotate(45deg);
+}

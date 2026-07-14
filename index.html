@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Catan Digital Board</title>
+    <link rel="stylesheet" href="./style.css"/>
+  </head>
+  <body>
+    <form id="settings">
+      <div class="input-row">
+        <label for="players">Players: </label>
+        <select name="players">
+          <option value="4">4</option>
+          <option value="6">6</option>
+        </select>
+      </div>
+
+      <div class="input-row">
+        <label for="harbours">Harbours: </label>
+        <input type="checkbox" name="harbours"/>
+      </div>
+
+      <button type="submit">Generate Board</button>
+    </form>
+    <div id="board"></div>
+    <script type="text/javascript" src="./script.js"></script>
+  </body>
+</html>
