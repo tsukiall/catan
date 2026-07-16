@@ -37,6 +37,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  gap: 16px;
 }
 
 #board {
@@ -58,30 +59,36 @@ body {
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   left: calc((var(--row-offset) * var(--hex-w)) + (var(--col) * var(--hex-w)));
   top: calc(var(--row) * var(--vert-spacing));
+  background-position: center;
+  background-size: contain;
 }
 
 .hex.lumber {
-  background-color: #2e5c31;
+  background-image: url('./tiles/lumber.png');
 }
 
 .hex.wool {
-  background-color: #7bc04b;
+  background-image: url('./tiles/wool.png');
 }
 
 .hex.grain {
-  background-color: #f4d03f;
+  background-image: url('./tiles/grain.png');
 }
 
 .hex.brick {
-  background-color: #c0392b;
+  background-image: url('./tiles/brick.png');
 }
 
 .hex.ore {
-  background-color: #7f8c8d;
+  background-image: url('./tiles/ore.png');
 }
 
 .hex.desert {
-  background-color: #d4c49d;
+  background-image: url('./tiles/desert.png');
+}
+
+.hex.water {
+  background-image: url('./tiles/water.png');
 }
 
 .token {
@@ -90,13 +97,19 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #e3c586;
   border: 1px solid black;
-  width: 25%;
+  width: 40%;
   aspect-ratio: 1 / 1;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   line-height: 1;
+  position: relative;
+}
+
+.token::after {
+  position: absolute;
+  bottom: 15%;
 }
 
 .token.num-6,
@@ -104,42 +117,61 @@ body {
   color: red;
 }
 
+.token.num-2::after,
+.token.num-12::after {
+  content: '.';
+}
+
+.token.num-3::after,
+.token.num-11::after {
+  content: '..';
+}
+
+.token.num-4::after,
+.token.num-10::after {
+  content: '...';
+}
+
+.token.num-5::after,
+.token.num-9::after {
+  content: '....';
+}
+
+.token.num-6::after,
+.token.num-8::after {
+  content: '.....';
+}
+
 .token.selected {
   outline: 5px solid lime;
 }
 
 .harbour {
-  font-weight: 900;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-transform: uppercase;
-  position: absolute;
-  z-index: 10;
-  color: white;
-  width: calc(var(--hex-h) * 0.5);
-  aspect-ratio: 1 / 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
 }
 
-.harbour::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 2px;
-  width: 50%;
-  border-bottom: 4px solid white;
-  transform-origin: bottom left;
-  transform: rotate(-45deg);
+.harbour.any {
+  background-image: url('./harbours/any.png');
 }
 
-.harbour::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 2px;
-  width: 50%;
-  border-bottom: 4px solid white;
-  transform-origin: bottom right;
-  transform: rotate(45deg);
+.harbour.brick {
+  background-image: url('./harbours/brick.png');
+}
+
+.harbour.grain {
+  background-image: url('./harbours/grain.png');
+}
+
+.harbour.lumber {
+  background-image: url('./harbours/lumber.png');
+}
+
+.harbour.ore {
+  background-image: url('./harbours/ore.png');
+}
+
+.harbour.wool {
+  background-image: url('./harbours/wool.png');
 }
