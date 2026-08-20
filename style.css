@@ -61,6 +61,7 @@ body {
   top: calc(var(--row) * var(--vert-spacing));
   background-position: center;
   background-size: contain;
+  transform: scale(1.016);
 }
 
 .hex.lumber {
@@ -105,6 +106,7 @@ body {
   border-radius: 50%;
   line-height: 1;
   position: relative;
+  user-select: none;
 }
 
 .token::after {
